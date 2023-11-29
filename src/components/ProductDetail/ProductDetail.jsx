@@ -1,4 +1,4 @@
-import { ArchiveBoxXMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const ProductDetail = () => {
   return (
@@ -7,7 +7,7 @@ const ProductDetail = () => {
         <h2 className="font-medium text-xl">Detail</h2>
         <div>
           {" "}
-          <ArchiveBoxXMarkIcon className="h-6 w-6 text-black-500 cursor-pointer" />
+          <XMarkIcon className="h-6 w-6 "/>
         </div>
       </div>
     </aside>
