@@ -1,9 +1,13 @@
-import NavBar from "../../components/NavBar/NavBar"
+import Layout from "../../components/Layout/Layout";
+import NavBar from "../../components/NavBar/NavBar";
 
 const Home = () => {
   return (
-    <NavBar/>
-  )
-}
+    <Layout>
+      <NavBar />
+      Home
+    </Layout>
+  );
+};
 
-export default Home
+export default Home;

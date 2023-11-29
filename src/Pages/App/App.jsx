@@ -6,6 +6,7 @@ import MyOrder from "../MyOrder/MyOrder";
 import MyOrders from "../MyOreders/MyOrders";
 import NotFound from "../NotFound/NotFound";
 import SignIn from "../SignIn/SignIn";
+import NavBar from "../../components/NavBar/NavBar";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/*" element={<NotFound />}></Route>
         <Route path="/sign-in" element={<SignIn />}></Route>
       </Routes>
+      <NavBar/>
     </BrowserRouter>
   );
 }
