@@ -7,9 +7,11 @@ import MyOrders from "../MyOreders/MyOrders";
 import NotFound from "../NotFound/NotFound";
 import SignIn from "../SignIn/SignIn";
 import NavBar from "../../components/NavBar/NavBar";
+import { ShoppingCartProvider } from "../../context/Context";
 
 function App() {
   return (
+    <ShoppingCartProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -21,6 +23,7 @@ function App() {
       </Routes>
       <NavBar/>
     </BrowserRouter>
+    </ShoppingCartProvider>
   );
 }
 
