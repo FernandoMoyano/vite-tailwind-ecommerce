@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card/card";
 import Layout from "../../components/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
+import ProductDetail from "../../components/ProductDetail/ProductDetail";
 
 const Home = () => {
   const [items, setItems] = useState(null);
@@ -27,6 +28,7 @@ const Home = () => {
           <Card key={item.id} {...item} />
         ))}
       </section>
+      <ProductDetail/>
     </Layout>
   );
 };

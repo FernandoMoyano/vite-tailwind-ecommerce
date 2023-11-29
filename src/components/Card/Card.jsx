@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../context/Context";
+
 /* eslint-disable react/prop-types */
-const Card = ({ price, title, image, category}) => {
+const Card = ({ price, title, image, category }) => {
+  const { count, setCount } = useContext(ShoppingCartContext);
+
   return (
     <div className="bg-white cursor-pointer w-56 h-60">
       <figure className="relative mb-2 w-full h-4/5">
@@ -11,7 +16,10 @@ const Card = ({ price, title, image, category}) => {
           src={image}
           alt="headpones"
         ></img>
-        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+        <button
+          onClick={() => setCount(count + 1)}
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+        >
           +
         </button>
       </figure>
