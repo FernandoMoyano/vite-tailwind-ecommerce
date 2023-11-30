@@ -1,24 +1,29 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context/Context";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-/* eslint-disable react/prop-types */
-const Card = ({ price, title, image, category }) => {
-  const { count, setCount, openProductDetail } =
+const Card = (data) => {
+  const { count, setCount, openProductDetail, setProductToShow } =
     useContext(ShoppingCartContext);
+
+  const showProduct = (productDetail) => {
+    openProductDetail();
+    setProductToShow(productDetail);
+  };
 
   return (
     <div
-      onClick={() => openProductDetail()}
+      onClick={() => showProduct(data)}
       className="bg-white cursor-pointer w-56 h-60"
     >
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
-          {category}
+          {data.category}
         </span>
         <img
           className="w-full h-full object-cover"
-          src={image}
+          src={data.image}
           alt="headpones"
         ></img>
         <button
@@ -29,8 +34,8 @@ const Card = ({ price, title, image, category }) => {
         </button>
       </figure>
       <p className="flex justify-between">
-        <span className="text-sm font-light truncate mr-2">{title}</span>
-        <span className="text-md font-medium">{price}</span>
+        <span className="text-sm font-light truncate mr-2">{data.title}</span>
+        <span className="text-md font-medium">{data.price}</span>
       </p>
     </div>
   );

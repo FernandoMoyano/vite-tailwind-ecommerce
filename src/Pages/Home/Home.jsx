@@ -12,6 +12,7 @@ const Home = () => {
       try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
+        console.log(data)
         setItems(data);
       } catch (error) {
         console.log(`Hubo un error ${error}`);
