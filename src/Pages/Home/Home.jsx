@@ -3,6 +3,7 @@ import Card from "../../components/Card/card";
 import Layout from "../../components/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import ProductDetail from "../../components/ProductDetail/ProductDetail";
+import CheckoutSideMenu from "../../components/CheckoutSideMenu/CheckoutSideMenu";
 
 const Home = () => {
   const [items, setItems] = useState(null);
@@ -30,6 +31,7 @@ const Home = () => {
         ))}
       </section>
       <ProductDetail/>
+      <CheckoutSideMenu/>
     </Layout>
   );
 };

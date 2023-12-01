@@ -1,15 +1,32 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context/Context";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
 const Card = (data) => {
-  const { count, setCount, openProductDetail, setProductToShow } =
-    useContext(ShoppingCartContext);
+  const {
+    count,
+    setCount,
+    openProductDetail,
+    setProductToShow,
+    cartProducts,
+    setCartProducts,
+    openCheckoutSideMenu,
+  
+    closeProductDetail
+  } = useContext(ShoppingCartContext);
 
   const showProduct = (productDetail) => {
     openProductDetail();
     setProductToShow(productDetail);
+ 
+  };
+
+  const addProductsToCart = (event, productData) => {
+    event.stopPropagation();
+    setCount(count + 1);
+    setCartProducts(...cartProducts, productData);
+    closeProductDetail()
+    openCheckoutSideMenu();
   };
 
   return (
@@ -26,11 +43,11 @@ const Card = (data) => {
           src={data.image}
           alt="headpones"
         ></img>
-        <button
-          onClick={() => setCount(count + 1)}
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-        >
-          <PlusIcon className="h-6 w-6" />
+        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+          <PlusIcon
+            onClick={(event) => addProductsToCart(event, data)}
+            className="h-6 w-6"
+          />
         </button>
       </figure>
       <p className="flex justify-between">
