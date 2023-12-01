@@ -11,22 +11,22 @@ const Card = (data) => {
     cartProducts,
     setCartProducts,
     openCheckoutSideMenu,
-  
-    closeProductDetail
+
+    closeProductDetail,
   } = useContext(ShoppingCartContext);
 
   const showProduct = (productDetail) => {
     openProductDetail();
     setProductToShow(productDetail);
- 
   };
 
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
     setCount(count + 1);
-    setCartProducts(...cartProducts, productData);
-    closeProductDetail()
+    setCartProducts([...cartProducts, productData])
     openCheckoutSideMenu();
+    closeProductDetail();
+  
   };
 
   return (
