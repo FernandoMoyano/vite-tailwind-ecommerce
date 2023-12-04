@@ -4,10 +4,19 @@ import { ShoppingCartContext } from "../../context/Context";
 import OrderCard from "../OrderCard/OrderCard";
 
 const CheckoutSideMenu = () => {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cartProducts } =
-    useContext(ShoppingCartContext);
+  const {
+    isCheckoutSideMenuOpen,
+    closeCheckoutSideMenu,
+    cartProducts,
+    setCartProducts,
+  } = useContext(ShoppingCartContext);
 
   console.log("CART:", cartProducts);
+
+  const handleDelete = (id) => {
+    const filteredProducts = cartProducts.filter((product) => product.id != id);
+    setCartProducts(filteredProducts);
+  };
 
   return (
     <aside
@@ -31,9 +40,11 @@ const CheckoutSideMenu = () => {
           cartProducts.map((product) => (
             <OrderCard
               key={product.id}
+              id={product.id}
               title={product.title}
               imageUrl={product.image}
               price={product.price}
+              handleDelete={handleDelete}
             />
           ))
         ) : (
