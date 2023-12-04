@@ -26,7 +26,7 @@ const CheckoutSideMenu = () => {
           />
         </div>
       </div>
-      <div className="px-6">
+      <div className="px-6 overflow-y-scroll">
         {Array.isArray(cartProducts) && cartProducts.length > 0 ? (
           cartProducts.map((product) => (
             <OrderCard

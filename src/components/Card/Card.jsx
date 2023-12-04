@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context/Context";
-import { PlusIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, PlusIcon } from "@heroicons/react/24/solid";
 
 const Card = (data) => {
   const {
@@ -23,10 +23,31 @@ const Card = (data) => {
   const addProductsToCart = (event, productData) => {
     event.stopPropagation();
     setCount(count + 1);
-    setCartProducts([...cartProducts, productData])
+    setCartProducts([...cartProducts, productData]);
     openCheckoutSideMenu();
     closeProductDetail();
-  
+  };
+
+  const renderIcon = (id) => {
+    const isInCart =
+      cartProducts.filter((product) => product.id === id).length > 0;
+
+    if (isInCart) {
+      return (
+        <button className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
+          <CheckIcon className="h-6 w-6 text-white" />
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={(event) => addProductsToCart(event, data)}
+        >
+          <PlusIcon className="h-6 w-6 text-black" />
+        </button>
+      );
+    }
   };
 
   return (
@@ -43,12 +64,7 @@ const Card = (data) => {
           src={data.image}
           alt="headpones"
         ></img>
-        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
-          <PlusIcon
-            onClick={(event) => addProductsToCart(event, data)}
-            className="h-6 w-6"
-          />
-        </button>
+        {renderIcon(data.id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light truncate mr-2">{data.title}</span>
